@@ -1,5 +1,5 @@
 {
-  "name": "svg-cleaner",
+  "name": "simplify-svg",
   "version": "0.0.0",
   "main": "lib/index.js",
   "description": "Simplify SVG which is exported by Sketch/Illustrator etc.",
@@ -41,10 +41,10 @@
   "license": "WTFPL",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/morlay/svg-simplify.git"
+    "url": "git+https://github.com/morlay/simplify-svg.git"
   },
   "bugs": {
-    "url": "https://github.com/morlay/svg-simplify/issues"
+    "url": "https://github.com/morlay/simplify-svg/issues"
   },
-  "homepage": "https://github.com/morlay/svg-simplify#readme"
+  "homepage": "https://github.com/morlay/simplify-svg#readme"
 }
