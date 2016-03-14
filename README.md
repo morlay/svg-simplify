@@ -30,7 +30,7 @@ simplifySvg(svgString, {
 
 #### As WebpackLoader
 
-```json
+```js
 {
   module: {
     loaders: [
