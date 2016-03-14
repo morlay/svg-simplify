@@ -8,6 +8,7 @@ const svgClean = (svgString, svgoOptions = {}) => {
       { convertShapeToPath: true },
       { removeDesc: { removeAny: true } },
       { removeStyleElement: true },
+      { removeViewBox: true },
     ],
     js2svg: {
       pretty: true,
