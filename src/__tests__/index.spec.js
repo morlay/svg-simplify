@@ -7,7 +7,7 @@ describe('#svgSimplify', () => {
   it('should success transform svg', () => {
     const svgString = getContent('icon.svg');
     return svgSimplify(svgString, {
-      scale: { width: 24 },
+      scale: { width: 48 },
     })
       .then((codeString) => {
         expect(codeString).to.be.a('string');
