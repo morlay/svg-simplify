@@ -1,6 +1,6 @@
 {
   "name": "simplify-svg",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "lib/index.js",
   "description": "Simplify SVG which is exported by Sketch/Illustrator etc.",
   "scripts": {

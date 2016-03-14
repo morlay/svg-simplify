@@ -38,7 +38,7 @@ const getOriginCoordinate = (svgAttrs) =>
       const viewBoxValues = value.split(' ');
 
       return {
-        ...svgAttrs,
+        ...result,
         viewBoxX: parseFloat(viewBoxValues[0], 10),
         viewBoxY: parseFloat(viewBoxValues[1], 10),
         viewBoxWidth: parseFloat(viewBoxValues[2], 10),
@@ -47,7 +47,7 @@ const getOriginCoordinate = (svgAttrs) =>
     }
 
     return {
-      ...svgAttrs,
+      ...result,
       [key]: parseFloat(value, 10),
     };
   }, {});
@@ -72,13 +72,12 @@ export const getScaledCoordinate = (coordinate, scale) => ({
 const scaleSvg = ($, scaleOptions) => {
   const $svg = $('svg');
   const svgAttrs = $svg.attr();
-  const originCoordinate = svgCoordinateSimplify(
-    getOriginCoordinate(svgAttrs)
-  );
+  const originCoordinate = getOriginCoordinate(svgAttrs);
+  const fixedCoordinate = svgCoordinateSimplify(originCoordinate);
 
-  const scale = getScale(originCoordinate, scaleOptions);
+  const scale = getScale(fixedCoordinate, scaleOptions);
 
-  const finalCoordinate = getScaledCoordinate(originCoordinate, scale);
+  const finalCoordinate = getScaledCoordinate(fixedCoordinate, scale);
 
   $svg.attr({
     width: finalCoordinate.width,
