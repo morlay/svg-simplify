@@ -55,10 +55,14 @@ const getOriginCoordinate = (svgAttrs) =>
 export const svgCoordinateSimplify = (coordinate) => ({
   width: coordinate.width || coordinate.viewBoxWidth,
   height: coordinate.height || coordinate.viewBoxHeight,
-  scaleX: coordinate.width ? (coordinate.width / coordinate.viewBoxWidth) : 1,
-  scaleY: coordinate.height ? (coordinate.height / coordinate.viewBoxHeight) : 1,
-  transformX: -coordinate.viewBoxX,
-  transformY: -coordinate.viewBoxY,
+  scaleX: (coordinate.width && coordinate.viewBoxWidth)
+    ? coordinate.width / coordinate.viewBoxWidth
+    : 1,
+  scaleY: (coordinate.height && coordinate.viewBoxHeight)
+    ? coordinate.height / coordinate.viewBoxHeight
+    : 1,
+  transformX: coordinate.viewBoxX ? -coordinate.viewBoxX : 0,
+  transformY: coordinate.viewBoxX ? -coordinate.viewBoxY : 0,
 });
 
 export const getScaledCoordinate = (coordinate, scale) => ({
