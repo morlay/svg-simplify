@@ -1,12 +1,33 @@
-import _ from 'lodash';
 import svgSimplify from './index';
+import loaderUtils from 'loader-utils';
 
-function svgSimplifyLoader(text) {
+const idPrefixForLoader = (loaderContext, options = {}) =>
+  loaderUtils.interpolateName(loaderContext, '[sha512:hash:base64:7]', options);
+
+function svgSimplifyLoader(content) {
+  if (this.cacheable) this.cacheable();
   const callback = this.async();
 
-  const options = _.merge({}, this.options.simplifySvg || {});
+  let options = loaderUtils.parseQuery(this.query);
 
-  svgSimplify(text, options)
+  if (options.useConfig) {
+    const configName = options.useConfig;
+    options = this.options[configName];
+    if (options === undefined) {
+      callback(new Error(
+        `You specified "useConfig=${configName}" for svg-simplify
+        but there is no property named "${configName}" in your main webpack configuration.`
+      ));
+      return;
+    }
+  }
+
+  svgSimplify(content, {
+    ...options,
+    idPrefix: () => idPrefixForLoader(this, {
+      content,
+    }),
+  })
     .then((res) => {
       callback(null, res);
     })

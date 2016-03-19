@@ -9,8 +9,8 @@ Simplify SVG which is exported by Sketch/Illustrator etc.
 
 ### Options
 
-#### `Object: svgo`
-Same as [svg](https://github.com/svg/svgo)
+#### `Function: idPrefix`
+When svgo cleanup svgs, it will minify ids, for inline svg usages, svg defs will be overwhite by 
 
 #### `Number|Object: scale`
 default is `1`, and could scale each svg icon by setting `{ width: Number }`
@@ -37,7 +37,7 @@ simplifySvg(svgString, {
       {
         test: /.*\.svg$/,
         loaders: [
-          'simplify-svg/lib/loader'
+          'simplify-svg/lib/loader?useConfig=simplifySvg'
         ]
       }
     ]
