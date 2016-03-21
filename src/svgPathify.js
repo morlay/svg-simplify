@@ -13,7 +13,7 @@ const s2pTags = [
 const parseFloatAttrs = (attrs = {}) =>
   Object.keys(attrs).reduce((finalAttrs, key) => ({
     ...finalAttrs,
-    [key]: parseFloat(attrs[key], 10),
+    [key]: (key === 'points') ? attrs[key] : parseFloat(attrs[key], 10),
   }), {});
 
 const convertShapeToPath = ($) => {
