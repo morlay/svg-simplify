@@ -17,7 +17,7 @@ default is `1`, and could scale each svg icon by setting `{ width: Number }`
 #### Use `simplify-svg`
 
 [![NPM](https://img.shields.io/npm/v/simplify-svg-loader.svg)](https://npmjs.org/package/simplify-svg-loader)
-[![Dependencies](https://img.shields.io/david/morlay/simplify-svg-loader.svg)](https://david-dm.org/morlay/simplify-svg-loader?path=packages)
+[![Dependencies](https://img.shields.io/david/morlay/simplify-svg-loader.svg?path=packages/simplify-svg)](https://david-dm.org/morlay/simplify-svg?path=packages/simplify-svg)
 
 
 ```js
