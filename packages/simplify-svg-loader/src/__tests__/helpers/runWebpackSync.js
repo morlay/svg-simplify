@@ -1,19 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
 import deasync from 'deasync';
-import _ from 'lodash';
 import MemoryFS from 'memory-fs';
-
-const unnecessaryPluginList = _.values(webpack.optimize);
-
-const isPluginInstanceOf = (pluginList, targetPlugin) =>
-  _.reduce(pluginList, (result, Plugin) => result || (targetPlugin instanceof Plugin), false);
-
-const removeUnnecessaryPlugins = (plugins) =>
-  _.filter(
-    plugins,
-    (pluginInstance) => !isPluginInstanceOf(unnecessaryPluginList, pluginInstance)
-  );
 
 const runWebpackSync = (filename, webpackConfig) => {
   let result;
@@ -25,22 +13,12 @@ const runWebpackSync = (filename, webpackConfig) => {
   const compiler = webpack({
     ...webpackConfig,
     entry: filename,
-    plugins: removeUnnecessaryPlugins(webpackConfig.plugins),
     output: {
       ...webpackConfig.output,
       libraryTarget: 'commonjs2',
       path: destDir,
       filename: name,
-    },
-    externals: [
-      (context, subRequest, callback) => {
-        if (subRequest !== filename) {
-          callback(null, subRequest);
-        } else {
-          callback();
-        }
-      },
-    ],
+    }
   });
 
   compiler.outputFileSystem = fs;
@@ -49,7 +27,8 @@ const runWebpackSync = (filename, webpackConfig) => {
     if (err) {
       throw err;
     }
-    const resultFilename = path.join(destDir, name);
+    const resultFilename = path.resolve(destDir, name);
+
     if (fs.existsSync(resultFilename)) {
       result = String(fs.readFileSync(resultFilename));
     } else {

@@ -1,4 +1,4 @@
-import svgSimplify from './index';
+import svgSimplify from 'simplify-svg';
 import loaderUtils from 'loader-utils';
 
 const idPrefixForLoader = (loaderContext, options = {}) =>

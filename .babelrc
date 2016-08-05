@@ -1,8 +1,8 @@
 {
   "presets": [
-    "es2015"
+    "@morlay/babel-preset"
   ],
   "plugins": [
-    "transform-object-rest-spread"
+    "transform-es2015-modules-commonjs"
   ]
 }

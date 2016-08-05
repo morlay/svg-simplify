@@ -1,0 +1,3 @@
+extends: "@morlay/eslint-config"
+rules:
+  import/no-extraneous-dependencies: 0

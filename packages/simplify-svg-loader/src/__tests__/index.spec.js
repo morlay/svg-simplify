@@ -3,9 +3,9 @@ import path from 'path';
 
 import runWebpackSync from './helpers/runWebpackSync';
 
-describe.only('#loader', () => {
+describe('#loader', () => {
   it('should run correct', () => {
-    const targetFile = path.join(__dirname, 'fixtures/iconWithMask.svg');
+    const targetFile = path.join(__dirname, 'fixtures/index.js');
 
     const result = runWebpackSync(targetFile, {
       module: {
@@ -13,7 +13,7 @@ describe.only('#loader', () => {
           test: /\.svg$/,
           loaders: [
             'raw-loader',
-            path.join(__dirname, '../../lib/loader'),
+            path.join(__dirname, '../../lib'),
           ],
         }],
       },

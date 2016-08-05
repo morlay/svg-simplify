@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import getContent from './fixtures/getContent';
+import getContent from './helpers/getContent';
 
 import svgSimplify from '../index';
 
@@ -10,6 +10,7 @@ describe('#svgSimplify', () => {
       scale: { width: 48 },
     })
       .then((codeString) => {
+        console.log(codeString);
         expect(codeString).to.be.a('string');
       });
   });
