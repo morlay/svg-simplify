@@ -1,11 +1,11 @@
 {
   "name": "simplify-svg-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "author": "Morlay Null <morlay.null@gmail.com>",
   "license": "WTFPL",
   "dependencies": {
-    "simplify-svg": "1.0.0",
+    "simplify-svg": "^1.0.1",
     "loader-utils": "0.2.x"
   },
   "devDependencies": {
