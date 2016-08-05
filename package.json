@@ -5,6 +5,7 @@
     "lint": "lerna exec -- eslint src/ --fix",
     "build": "lerna exec -- babel src/ --ignore __*__ --out-dir lib/",
     "mocha": "lerna exec -- mocha -R dot --compilers .:babel-register src/__tests__/*.spec.js",
+    "pretest": "lerna bootstrap && npm run build",
     "test": "npm run lint && npm run mocha"
   },
   "devDependencies": {

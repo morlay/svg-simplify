@@ -18,7 +18,7 @@ const runWebpackSync = (filename, webpackConfig) => {
       libraryTarget: 'commonjs2',
       path: destDir,
       filename: name,
-    }
+    },
   });
 
   compiler.outputFileSystem = fs;
