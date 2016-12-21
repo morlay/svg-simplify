@@ -4,14 +4,6 @@ Simplify SVG which is exported by Sketch/Illustrator etc.
 
 [![Build Status](https://img.shields.io/travis/morlay/simplify-svg.svg)](https://travis-ci.org/morlay/simplify-svg)
 
-### Options
-
-#### `Function: idPrefix`
-When svgo cleanup svgs, it will minify ids, for inline svg usages, svg defs will be overwhite by
-
-#### `Number|Object: scale`
-default is `1`, and could scale each svg icon by setting `{ width: Number }`
-
 ### Usage
 
 #### Use `simplify-svg`
@@ -20,13 +12,8 @@ default is `1`, and could scale each svg icon by setting `{ width: Number }`
 [![Dependencies](https://img.shields.io/david/morlay/simplify-svg-loader.svg?path=packages/simplify-svg)](https://david-dm.org/morlay/simplify-svg?path=packages/simplify-svg)
 
 
-```js
-simplifySvg(svgString, {
-  scale: { width: 24 },
-})
- .then((svgResult) => {
-    // result is here
- });
+```ts
+simplifySvg(svgString: string, plugins?: IPluginConfig[]): string
 ```
 
 #### As WebpackLoader `simplify-svg-loader`
@@ -36,19 +23,32 @@ simplifySvg(svgString, {
 
 
 ```js
-{
+({
   module: {
-    loaders: [
+    rules: [
       {
         test: /.*\.svg$/,
-        loaders: [
-          'simplify-svg-loader?useConfig=simplifySvg'
+        use: [
+          {
+            loader: "simplify-svg-loader",
+            options: {
+              useConfig: "simplifySvg"
+            }
+          },
         ]
       }
     ]
   },
-  simplifySvg: {}
-}
+  plugins: [
+    new LoaderOptionsPlugin({
+      options: {
+        simplifySvg: {
+          plugins: []
+        }, 
+      }
+    })
+  ],
+})
 ```
 
 ### Notices

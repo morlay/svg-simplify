@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <clipPath id="925625848">
+        <polygon points="497,129 537.1,135.3 494.4,215.8" />
+    </clipPath>
+    <g clip-path="url(#925625848)">
+        <g>
+            <path d="M50,50L200,200" />
+        </g>
+    </g>
+</svg>
