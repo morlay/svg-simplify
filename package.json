@@ -10,7 +10,8 @@
     "lint": "tslint {packages-src,tools}/{,**/}{,**/}*.ts{,x} -c tslint.json",
     "build": "tsc && npm run npm-package",
     "ava": "NODE_PATH=packages ava -v",
-    "test": "npm run build && npm run ava"
+    "test": "npm run build && npm run ava",
+    "publish": "npm run test && lerna publish --skip-git"
   },
   "packages": {
     "simplify-svg": {
