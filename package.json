@@ -23,6 +23,8 @@
         "cheerio": true,
         "lodash": true,
         "svg-points": true,
+        "postcss": true,
+        "node-murmurhash": true,
         "svgpath": true
       }
     },
@@ -40,7 +42,6 @@
     "@types/lodash": "4.14.x",
     "@types/react": "0.14.x",
     "cheerio": "0.22.x",
-    "glob": "7.1.x",
     "loader-utils": "0.2.x",
     "lodash": "4.17.x",
     "node-murmurhash": "2.1.x",
@@ -54,6 +55,7 @@
     "@types/node": "6.0.x",
     "@types/webpack": "2.0.x",
     "ava": "0.17.x",
+    "glob": "7.1.x",
     "fs-extra": "1.0.x",
     "memory-fs": "0.4.x",
     "npm-check-updates": "2.8.x",
