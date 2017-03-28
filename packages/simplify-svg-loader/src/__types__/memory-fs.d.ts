@@ -39,9 +39,9 @@ declare module "memory-fs" {
     writeFileSync(_path: string, content: string | Buffer, encoding?: string): void;
 
     createReadStream(path: string, options: {
-      start: number;
-      end: number;
-    }): any;
+                       start: number;
+                       end: number;
+                     }): any;
 
     createWriteStream(path: string, options: any): any;
 

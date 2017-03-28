@@ -1,0 +1,10 @@
+{
+  "name": "simplify-svg-loader",
+  "version": "2.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "loader-utils": "1.1.x",
+    "simplify-svg": "2.0.1"
+  }
+}

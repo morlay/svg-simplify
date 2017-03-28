@@ -1,26 +1,26 @@
-import * as _ from "lodash";
-import { test } from "ava";
+import { test } from "ava"
+import * as _ from "lodash"
+
+import * as plugins from "../"
 
 import {
-  simplifySvg,
   IPlugin,
-} from "../../utils";
-
-import * as plugins from "../";
+  simplifySvg,
+} from "../../utils"
 
 import {
   getCases,
   trimWhitespace,
-} from "./cases";
+} from "./cases"
 
-const cases = getCases();
+const cases = getCases()
 
 _.forEach(cases, (caseList, pluginName) => {
   _.forEach(caseList, (caseItem, index) => {
     test(`${pluginName}: ${index}`, (t) => {
       t.is(trimWhitespace(simplifySvg(caseItem.src, [
         (plugins as any)[pluginName] as IPlugin,
-      ])), caseItem.result);
-    });
-  });
-});
+      ])), caseItem.result)
+    })
+  })
+})

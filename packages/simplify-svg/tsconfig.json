@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2015",
+    "pretty": true,
+    "sourceMap": false
+  },
+  "exclude": [
+    "node_modules/*",
+    "dist/*"
+  ]
+}

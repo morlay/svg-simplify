@@ -1,9 +1,8 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "baseUrl": "packages-src",
-    "rootDir": "packages-src",
-    "outDir": "packages",
+    "rootDir": "src",
+    "outDir": "dist",
     "noImplicitAny": true,
     "experimentalDecorators": true,
     "declaration": true,
@@ -11,15 +10,10 @@
     "module": "commonjs",
     "target": "es2015",
     "pretty": true,
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./@types/"
-    ],
     "sourceMap": false
   },
   "exclude": [
     "node_modules/*",
-    "packages/*",
-    "tools/*"
+    "dist/*"
   ]
 }

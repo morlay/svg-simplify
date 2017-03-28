@@ -2,67 +2,31 @@
   "private": true,
   "ava": {
     "files": [
-      "packages/**/**/__tests__/*.spec.js"
+      "packages/**/__tests__/*.spec.js"
     ]
   },
   "scripts": {
-    "npm-package": "ts-node tools/npm-package",
-    "lint": "tslint {packages-src,tools}/{,**/}{,**/}*.ts{,x} -c tslint.json",
-    "build": "tsc && npm run npm-package",
-    "ava": "NODE_PATH=packages ava -v",
-    "test": "npm run build && npm run ava",
-    "publish": "npm run test && lerna publish --skip-git"
-  },
-  "packages": {
-    "simplify-svg": {
-      "main": "index.js",
-      "types": "index.d.ts",
-      "dependencies": {
-        "@types/cheerio": true,
-        "@types/lodash": true,
-        "cheerio": true,
-        "lodash": true,
-        "svg-points": true,
-        "postcss": true,
-        "node-murmurhash": true,
-        "svgpath": true
-      }
-    },
-    "simplify-svg-loader": {
-      "main": "index.js",
-      "types": "index.d.ts",
-      "dependencies": {
-        "simplify-svg": true,
-        "loader-utils": true
-      }
-    }
-  },
-  "dependencies": {
-    "@types/cheerio": "0.17.x",
-    "@types/lodash": "4.14.x",
-    "@types/react": "0.14.x",
-    "cheerio": "0.22.x",
-    "loader-utils": "0.2.x",
-    "lodash": "4.17.x",
-    "node-murmurhash": "2.1.x",
-    "postcss": "5.2.x",
-    "svg-points": "3.1.x",
-    "svgpath": "2.2.x"
+    "lint": "tslint packages/{,**/}{,**/}*.ts{,x} -c tslint.json",
+    "build": "lerna exec -- tsc -p .",
+    "ncu": "lerna exec -- ncu -a",
+    "ava": "ava -v",
+    "test": "npm run build && npm run ava"
   },
   "devDependencies": {
-    "@types/fs-extra": "0.0.x",
+    "@types/fs-extra": "2.0.x",
     "@types/glob": "5.0.x",
-    "@types/node": "6.0.x",
-    "@types/webpack": "2.0.x",
-    "ava": "0.17.x",
+    "@types/node": "7.0.x",
+    "@types/webpack": "2.2.x",
+    "ava": "0.18.x",
+    "fs-extra": "2.1.x",
     "glob": "7.1.x",
-    "fs-extra": "1.0.x",
+    "lerna": "2.0.0-beta.38",
     "memory-fs": "0.4.x",
-    "npm-check-updates": "2.8.x",
+    "npm-check-updates": "2.10.x",
     "raw-loader": "0.5.x",
-    "ts-node": "1.7.x",
-    "tslint": "4.2.x",
-    "typescript": "2.1.x",
-    "webpack": "2.1.0-beta.27"
+    "ts-node": "3.0.x",
+    "tslint": "4.5.x",
+    "typescript": "2.2.x",
+    "webpack": "2.3.x"
   }
 }
