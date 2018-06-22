@@ -1,6 +1,5 @@
-/// <reference types="cheerio"/>
-
 import * as cheerio from "cheerio";
+import { IPlugin } from "simplify-svg/dist/utils";
 
 export function parse(svgStr: string): CheerioStatic {
   return cheerio.load(svgStr, {
@@ -21,9 +20,9 @@ export type IPluginConfig = IPlugin | [IPlugin, any];
 export function simplifySvg(svgString: string, plugins?: IPluginConfig[]) {
   const $ = parse(svgString);
 
-  [].concat(plugins || []).forEach((plugin) => {
-    const pluginConfig = [].concat(plugin);
-    pluginConfig[0]($, pluginConfig[1]);
+  ([] as IPluginConfig[]).concat(plugins || []).forEach((plugin) => {
+    const pluginConfig = ([] as IPluginConfig[]).concat(plugin);
+    (pluginConfig[0] as IPlugin)($, pluginConfig[1]);
   });
 
   return stringify($);

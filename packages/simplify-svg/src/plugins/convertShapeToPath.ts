@@ -1,11 +1,7 @@
 import * as _ from "lodash";
-import {
-  IPlugin,
-} from "../utils";
 
-import {
-  toPath,
-} from "svg-points";
+import { toPath } from "svg-points";
+import { IPlugin } from "../utils";
 
 const shapes = {
   circle: {
@@ -44,7 +40,7 @@ const shapes = {
 const pickAttrs = (attrs: any, defaults: any): any =>
   _.mapValues(
     defaults,
-    (value: string, key: string) => key === "points" ? attrs[key] : (parseFloat(attrs[key]) || value),
+    (value: string, key: string) => (key === "points" ? attrs[key] : parseFloat(attrs[key]) || value),
   );
 
 export const convertShapeToPath: IPlugin = ($): void => {
@@ -57,7 +53,7 @@ export const convertShapeToPath: IPlugin = ($): void => {
 
     $elm.each((index, element) => {
       const $element = $(element);
-      const attrs = $element.attr("");
+      const attrs = $element.attr();
 
       const pathString = toPath({
         type: tag,
@@ -66,7 +62,7 @@ export const convertShapeToPath: IPlugin = ($): void => {
 
       const $path = $("<path />");
 
-      _.forEach(_.omit(attrs, shapeAttrs), (value, attr) => {
+      _.forEach(_.omit(attrs, shapeAttrs), (value: string, attr: string) => {
         $path.attr(attr, value);
       });
 

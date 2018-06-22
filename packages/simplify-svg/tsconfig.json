@@ -1,19 +1,8 @@
 {
-  "compileOnSave": true,
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist",
-    "noImplicitAny": true,
-    "experimentalDecorators": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "es2015",
-    "pretty": true,
-    "sourceMap": false
+    "outDir": "dist"
   },
-  "exclude": [
-    "node_modules/*",
-    "dist/*"
-  ]
+  "include": ["src/**/*"]
 }

@@ -1,32 +1,44 @@
 {
   "private": true,
-  "ava": {
-    "files": [
-      "packages/**/__tests__/*.spec.js"
-    ]
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "json",
+      "jsx",
+      "js"
+    ],
+    "modulePaths": [
+      "<rootDir>/packages"
+    ],
+    "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
   },
   "scripts": {
-    "lint": "tslint packages/{,**/}{,**/}*.ts{,x} -c tslint.json",
-    "build": "lerna exec -- tsc -p .",
     "ncu": "lerna exec -- ncu -a",
-    "ava": "ava -v",
-    "test": "npm run build && npm run ava"
+    "build": "tsc -p .",
+    "test": "jest"
   },
   "devDependencies": {
-    "@types/fs-extra": "2.0.x",
+    "@types/fs-extra": "5.0.x",
     "@types/glob": "5.0.x",
-    "@types/node": "7.0.x",
-    "@types/webpack": "2.2.x",
-    "ava": "0.18.x",
-    "fs-extra": "2.1.x",
+    "@types/jest": "23.1.1",
+    "@types/node": "10.3.x",
+    "@types/webpack": "4.4.x",
+    "fs-extra": "6.0.x",
     "glob": "7.1.x",
-    "lerna": "2.0.0-beta.38",
+    "jest": "23.1.0",
+    "lerna": "2.11.0",
     "memory-fs": "0.4.x",
-    "npm-check-updates": "2.10.x",
+    "npm-check-updates": "2.14.x",
+    "prettier": "1.13.x",
     "raw-loader": "0.5.x",
-    "ts-node": "3.0.x",
-    "tslint": "4.5.x",
-    "typescript": "2.2.x",
-    "webpack": "2.3.x"
+    "ts-jest": "22.4.6",
+    "ts-node": "6.1.x",
+    "tslint": "5.10.x",
+    "typescript": "2.9.x",
+    "webpack": "4.12.x"
   }
 }

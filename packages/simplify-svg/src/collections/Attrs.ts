@@ -7,7 +7,18 @@ export const attrsGroups = {
   animationValue: ["calcMode", "values", "keyTimes", "keySplines", "from", "to", "by"],
   conditionalProcessing: ["requiredFeatures", "requiredExtensions", "systemLanguage"],
   core: ["id", "tabindex", "xml:base", "xml:lang", "xml:space"],
-  graphicalEvent: ["onfocusin", "onfocusout", "onactivate", "onclick", "onmousedown", "onmouseup", "onmouseover", "onmousemove", "onmouseout", "onload"],
+  graphicalEvent: [
+    "onfocusin",
+    "onfocusout",
+    "onactivate",
+    "onclick",
+    "onmousedown",
+    "onmouseup",
+    "onmouseover",
+    "onmousemove",
+    "onmouseout",
+    "onload",
+  ],
   presentation: [
     "alignment-baseline",
     "baseline-shift",
@@ -199,9 +210,7 @@ export const inheritableAttrs = [
 ];
 
 // http://www.w3.org/TR/SVG/single-page.html#types-DataTypeColor
-export const colorsProps = [
-  "color", "fill", "stroke", "stop-color", "flood-color", "lighting-color",
-];
+export const colorsProps = ["color", "fill", "stroke", "stop-color", "flood-color", "lighting-color"];
 
 // http://www.w3.org/TR/SVG/linking.html#processingIRI
 export const referencesProps = [

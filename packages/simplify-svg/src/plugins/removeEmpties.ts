@@ -1,8 +1,6 @@
 import * as _ from "lodash";
 
-import {
-  IPlugin,
-} from "../utils";
+import { IPlugin } from "../utils";
 
 export const removeEmpties: IPlugin = ($): void => {
   $("*")

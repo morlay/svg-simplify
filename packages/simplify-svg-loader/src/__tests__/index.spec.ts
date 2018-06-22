@@ -1,23 +1,16 @@
-import { test } from "ava"
-import * as MemoryFileSystem from "memory-fs"
-import * as path from "path"
+import * as MemoryFileSystem from "memory-fs";
+import * as path from "path";
 
-import { Plugins } from "simplify-svg"
-import * as webpack from "webpack"
-import {
-  Configuration,
-  LoaderOptionsPlugin,
-} from "webpack"
+import { Plugins } from "simplify-svg";
+import * as webpack from "webpack";
+import { Configuration, LoaderOptionsPlugin } from "webpack";
 
 const runWebpack = (filename: string, webpackConfig: Configuration): Promise<string> => {
-  let result: string
-
-  const fs = new MemoryFileSystem()
-  const destDir = path.join(__dirname, "../temp")
-  const name = "result.js"
+  const fs = new MemoryFileSystem();
+  const destDir = path.join(__dirname, "../temp");
+  const name = "result.js";
 
   return new Promise((resolve, reject) => {
-
     const compiler = webpack({
       ...webpackConfig,
       entry: filename,
@@ -27,57 +20,61 @@ const runWebpack = (filename: string, webpackConfig: Configuration): Promise<str
         path: destDir,
         filename: name,
       },
-    })
+    });
 
-    compiler.outputFileSystem = fs
+    compiler.outputFileSystem = fs;
 
     compiler.run((err) => {
       if (err) {
-        reject(err)
+        reject(err);
       }
 
-      const resultFilename = path.resolve(destDir, name)
+      const resultFilename = path.resolve(destDir, name);
 
       if (fs.existsSync(resultFilename)) {
-        resolve(String(fs.readFileSync(resultFilename)))
+        resolve(String(fs.readFileSync(resultFilename)));
       } else {
-        resolve("")
+        resolve("");
       }
-    })
-  })
-}
+    });
+  });
+};
 
 const getModuleExports = (code: string): any => {
   const m = {
     exports: {},
-  }
+  };
 
   const warpper = `
     (function(module, exports, require) {
       ${code}
     })(m, m.exports, require) 
-  `
+  `;
 
-  eval(warpper)
+  eval(warpper);
 
-  return m.exports
-}
+  return m.exports;
+};
 
 test("simplify-svg-loader", async () => {
-  const result = await runWebpack(`${process.cwd()}/cases/simplify-svg-loader/iconWithMask.svg`, {
+  const svg = path.join(__dirname, `../__cases__/iconWithMask.svg`);
+
+  const result = await runWebpack(svg, {
     module: {
-      rules: [{
-        test: /\.svg$/,
-        use: [
-          "raw-loader",
-          {
-            loader: path.join(__dirname, ".."),
-            options: {
-              useConfig: "simplifySvg",
+      rules: [
+        {
+          test: /\.svg$/,
+          use: [
+            "raw-loader",
+            {
+              loader: path.join(__dirname, "../.."),
+              options: {
+                useConfig: "simplifySvg",
+              },
             },
-          },
-        ],
-      }],
+          ],
+        },
+      ],
     },
     plugins: [
       new LoaderOptionsPlugin({
@@ -85,8 +82,8 @@ test("simplify-svg-loader", async () => {
           simplifySvg: {
             plugins: [
               ($: CheerioStatic) => {
-                $("#Adobe_OpacityMaskFilter").remove()
-                $("[maskUnits=userSpaceOnUse]").remove()
+                $("#Adobe_OpacityMaskFilter").remove();
+                $("[maskUnits=userSpaceOnUse]").remove();
               },
               Plugins.removeComments,
               Plugins.convertStyleToAttrs,
@@ -104,7 +101,7 @@ test("simplify-svg-loader", async () => {
         },
       }),
     ],
-  })
+  });
 
-  console.log(getModuleExports(result))
-})
+  console.log(result, getModuleExports(result));
+});

@@ -6,10 +6,10 @@
   "dependencies": {
     "@types/cheerio": "0.22.x",
     "@types/lodash": "4.14.x",
-    "cheerio": "0.22.x",
+    "cheerio": "1.0.0-rc.2",
     "lodash": "4.17.x",
-    "svg-points": "4.0.x",
-    "postcss": "5.2.x",
+    "svg-points": "6.0.x",
+    "postcss": "6.0.x",
     "node-murmurhash": "2.1.x",
     "svgpath": "2.2.x"
   }

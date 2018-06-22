@@ -10,7 +10,9 @@ declare module "memory-fs" {
 
     existsSync(_path: string): boolean;
 
-    statSync(_path: string): {
+    statSync(
+      _path: string,
+    ): {
       isFile: () => boolean;
       isDirectory: () => boolean;
       isBlockDevice: () => boolean;
@@ -38,10 +40,13 @@ declare module "memory-fs" {
 
     writeFileSync(_path: string, content: string | Buffer, encoding?: string): void;
 
-    createReadStream(path: string, options: {
-                       start: number;
-                       end: number;
-                     }): any;
+    createReadStream(
+      path: string,
+      options: {
+        start: number;
+        end: number;
+      },
+    ): any;
 
     createWriteStream(path: string, options: any): any;
 

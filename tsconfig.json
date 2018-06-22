@@ -1,0 +1,20 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "simplify-svg": ["./simplify-svg/dist"],
+      "simplify-svg-loader": ["./simplify-svg-loader/dist"]
+    },
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "es2015",
+    "pretty": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules/*", "dist/*"]
+}

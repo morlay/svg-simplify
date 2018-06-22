@@ -1,6 +1,4 @@
-import {
-  IPlugin,
-} from "../utils";
+import { IPlugin } from "../utils";
 
 import * as SVGPath from "svgpath";
 
