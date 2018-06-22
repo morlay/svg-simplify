@@ -19,7 +19,8 @@
   "scripts": {
     "ncu": "lerna exec -- ncu -a",
     "build": "tsc -p .",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "lerna bootstrap"
   },
   "devDependencies": {
     "@types/fs-extra": "5.0.x",
