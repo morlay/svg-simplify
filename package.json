@@ -1,45 +1,29 @@
 {
   "private": true,
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "moduleFileExtensions": [
-      "tsx",
-      "ts",
-      "json",
-      "jsx",
-      "js"
-    ],
-    "modulePaths": [
-      "<rootDir>/packages"
-    ],
-    "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
-  },
   "scripts": {
     "ncu": "lerna exec -- ncu -a",
-    "build": "tsc -p .",
-    "test": "npm run build && jest",
+    "build": "lerna exec -- tsc",
+    "test": "npm run build && lerna exec -- jest",
     "postinstall": "lerna bootstrap"
   },
   "devDependencies": {
     "@types/fs-extra": "5.0.x",
     "@types/glob": "5.0.x",
-    "@types/jest": "23.1.1",
-    "@types/node": "10.3.x",
+    "@types/jest": "23.1.5",
+    "@types/node": "10.5.x",
     "@types/webpack": "4.4.x",
     "fs-extra": "6.0.x",
     "glob": "7.1.x",
-    "jest": "23.1.0",
+    "jest": "23.4.0",
     "lerna": "2.11.0",
     "memory-fs": "0.4.x",
     "npm-check-updates": "2.14.x",
     "prettier": "1.13.x",
     "raw-loader": "0.5.x",
-    "ts-jest": "22.4.6",
-    "ts-node": "6.1.x",
+    "ts-jest": "23.0.0",
+    "ts-node": "7.0.x",
     "tslint": "5.10.x",
     "typescript": "2.9.x",
-    "webpack": "4.12.x"
+    "webpack": "4.16.x"
   }
 }

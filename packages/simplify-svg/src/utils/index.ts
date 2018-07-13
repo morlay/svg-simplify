@@ -1,5 +1,4 @@
 import * as cheerio from "cheerio";
-import { IPlugin } from "simplify-svg/dist/utils";
 
 export function parse(svgStr: string): CheerioStatic {
   return cheerio.load(svgStr, {
