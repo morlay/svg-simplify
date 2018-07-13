@@ -1,11 +1,11 @@
 {
   "name": "simplify-svg-loader",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
     "loader-utils": "1.1.x",
-    "simplify-svg": "^3.0.0"
+    "simplify-svg": "^3.1.0"
   },
   "jest": {
     "transform": {
