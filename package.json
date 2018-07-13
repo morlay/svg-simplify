@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
     "ncu": "lerna exec -- ncu -a",
     "build": "lerna exec -- tsc",
     "test": "npm run build && lerna exec -- jest",
