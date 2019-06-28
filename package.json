@@ -2,29 +2,30 @@
   "private": true,
   "scripts": {
     "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
-    "ncu": "lerna exec -- ncu -a",
+    "ncu": "lerna exec -- ncu -u",
     "build": "lerna exec -- tsc",
     "test": "npm run build && lerna exec -- jest",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "prepare": "npm test && npm run build"
   },
   "devDependencies": {
-    "@types/fs-extra": "5.0.x",
-    "@types/glob": "5.0.x",
-    "@types/jest": "23.1.5",
-    "@types/node": "10.5.x",
+    "@types/fs-extra": "8.0.x",
+    "@types/glob": "7.1.x",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.0.x",
     "@types/webpack": "4.4.x",
-    "fs-extra": "6.0.x",
+    "fs-extra": "8.0.x",
     "glob": "7.1.x",
-    "jest": "23.4.0",
-    "lerna": "2.11.0",
+    "jest": "24.8.0",
+    "lerna": "3.15.0",
     "memory-fs": "0.4.x",
-    "npm-check-updates": "2.14.x",
-    "prettier": "1.13.x",
-    "raw-loader": "0.5.x",
-    "ts-jest": "23.0.0",
-    "ts-node": "7.0.x",
-    "tslint": "5.10.x",
-    "typescript": "2.9.x",
-    "webpack": "4.16.x"
+    "npm-check-updates": "3.1.x",
+    "prettier": "1.18.x",
+    "raw-loader": "3.0.x",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.3.x",
+    "tslint": "5.18.x",
+    "typescript": "3.5.x",
+    "webpack": "4.35.x"
   }
 }
