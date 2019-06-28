@@ -44,7 +44,7 @@
       "<rootDir>"
     ],
     "moduleNameMapper": {
-      "packages/(.*)": "<rootDir>/packages/$1/src"
+      "(.*)": "<rootDir>/packages/$1/src"
     },
     "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
   }
