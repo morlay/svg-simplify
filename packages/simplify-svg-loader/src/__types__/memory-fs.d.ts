@@ -30,7 +30,7 @@ declare module "memory-fs" {
 
     mkdirSync(_path: string): void;
 
-    _remove(_path: string, name: string, testFn: ((part: string) => boolean)): void;
+    _remove(_path: string, name: string, testFn: (part: string) => boolean): void;
 
     rmdirSync(_path: string): void;
 

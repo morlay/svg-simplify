@@ -24,7 +24,6 @@
     "raw-loader": "3.0.x",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.x",
-    "tslint": "5.18.x",
     "typescript": "3.5.x",
     "webpack": "4.35.x"
   }

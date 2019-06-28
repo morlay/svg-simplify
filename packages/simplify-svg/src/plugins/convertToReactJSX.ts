@@ -10,9 +10,8 @@ export const convertToReactJSX: IPlugin = ($): void => {
   $("*").each((idx, element) => {
     const attrs = element.attribs;
 
-    const patchedAttrs = _.mapKeys<any>(
-      attrs,
-      (value, key) => (attrsNeedToConvert[key] ? attrsNeedToConvert[key] : key),
+    const patchedAttrs = _.mapKeys<any>(attrs, (value, key) =>
+      attrsNeedToConvert[key] ? attrsNeedToConvert[key] : key,
     );
 
     _.assign(element, {

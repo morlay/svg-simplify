@@ -38,9 +38,8 @@ const shapes = {
 };
 
 const pickAttrs = (attrs: any, defaults: any): any =>
-  _.mapValues(
-    defaults,
-    (value: string, key: string) => (key === "points" ? attrs[key] : parseFloat(attrs[key]) || value),
+  _.mapValues(defaults, (value: string, key: string) =>
+    key === "points" ? attrs[key] : parseFloat(attrs[key]) || value,
   );
 
 export const convertShapeToPath: IPlugin = ($): void => {
