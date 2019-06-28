@@ -1,4 +1,5 @@
 {
+  "name": "simplify-svg",
   "private": true,
   "scripts": {
     "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
