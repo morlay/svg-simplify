@@ -4,7 +4,7 @@
     "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
     "ncu": "lerna exec -- ncu -u",
     "build": "lerna exec -- tsc",
-    "test": "npm run build && lerna exec -- jest",
+    "test": "jest",
     "postinstall": "lerna bootstrap",
     "prepare": "npm test && npm run build"
   },
@@ -26,5 +26,25 @@
     "ts-node": "8.3.x",
     "typescript": "3.5.x",
     "webpack": "4.35.x"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      ".+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "json",
+      "jsx",
+      "js"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleNameMapper": {
+      "packages/(.*)": "<rootDir>/packages/$1/src"
+    },
+    "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
   }
 }

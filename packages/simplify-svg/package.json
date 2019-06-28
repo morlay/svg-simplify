@@ -12,21 +12,5 @@
     "postcss": "7.0.x",
     "svg-points": "6.0.x",
     "svgpath": "2.2.x"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "<rootDir>/../../node_modules/ts-jest/preprocessor.js"
-    },
-    "moduleFileExtensions": [
-      "tsx",
-      "ts",
-      "json",
-      "jsx",
-      "js"
-    ],
-    "modulePaths": [
-      "<rootDir>/packages"
-    ],
-    "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
   }
 }
