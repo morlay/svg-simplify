@@ -1,36 +1,39 @@
 {
   "name": "simplify-svg",
-  "version": "0.0.0",
-  "private": true,
+  "version": "3.2.0",
   "scripts": {
     "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
-    "ncu": "lerna exec -- ncu -u",
-    "build": "lerna exec -- tsc",
     "test": "jest",
-    "postinstall": "lerna bootstrap",
+    "build": "tsc",
     "prepare": "npm test && npm run build"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@types/cheerio": "0.22.x",
+    "@types/lodash": "4.14.x",
+    "cheerio": "1.0.0-rc.2",
+    "lodash": "4.17.x",
+    "node-murmurhash": "2.1.x",
+    "postcss": "7.0.x",
+    "svg-points": "6.0.x",
+    "svgpath": "2.2.x"
   },
   "devDependencies": {
     "@types/fs-extra": "8.0.x",
     "@types/glob": "7.1.x",
-    "@types/jest": "24.0.15",
+    "@types/jest": "24.0.x",
     "@types/node": "12.0.x",
-    "@types/webpack": "4.4.x",
     "fs-extra": "8.0.x",
     "glob": "7.1.x",
-    "jest": "24.8.0",
-    "lerna": "3.15.0",
-    "memory-fs": "0.4.x",
-    "npm-check-updates": "3.1.x",
+    "jest": "24.8.x",
     "prettier": "1.18.x",
-    "raw-loader": "3.0.x",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.x",
-    "typescript": "3.5.x",
-    "webpack": "4.35.x"
+    "typescript": "3.5.x"
   },
   "jest": {
-    "testEnvironment": "jsdom",
+    "testEnvironment": "node",
     "transform": {
       ".+\\.tsx?$": "ts-jest"
     },
@@ -44,9 +47,6 @@
     "modulePaths": [
       "<rootDir>"
     ],
-    "moduleNameMapper": {
-      "(.*)": "<rootDir>/packages/$1/src"
-    },
     "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
   }
 }
