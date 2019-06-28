@@ -10,7 +10,7 @@
   "devDependencies": {
     "@types/fs-extra": "5.0.x",
     "@types/glob": "5.0.x",
-    "@types/jest": "23.1.5",
+    "@types/jest": "23.3.14",
     "@types/node": "10.5.x",
     "@types/webpack": "4.4.x",
     "fs-extra": "6.0.x",
