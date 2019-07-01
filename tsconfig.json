@@ -1,10 +1,10 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./lib",
     "noImplicitAny": true,
     "experimentalDecorators": true,
-    "declaration": true,
+    "declaration": false,
     "moduleResolution": "node",
     "module": "commonjs",
     "target": "es2015",
