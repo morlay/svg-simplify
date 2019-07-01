@@ -1,6 +1,6 @@
 {
   "name": "simplify-svg",
-  "version": "3.2.2",
+  "version": "3.2.3",
   "scripts": {
     "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
     "test": "jest",
