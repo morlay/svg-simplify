@@ -28,7 +28,7 @@
     "@types/fs-extra": "8.0.x",
     "@types/glob": "7.1.x",
     "@types/jest": "24.0.x",
-    "@types/node": "12.0.x",
+    "@types/node": "12.12.x",
     "fs-extra": "8.1.x",
     "glob": "7.1.x",
     "jest": "24.8.x",
