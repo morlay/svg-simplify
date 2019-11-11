@@ -32,7 +32,7 @@
     "fs-extra": "8.1.x",
     "glob": "7.1.x",
     "jest": "24.8.x",
-    "prettier": "1.18.x",
+    "prettier": "1.19.x",
     "ts-jest": "24.0.x",
     "ts-node": "8.3.x",
     "typescript": "3.5.x"
