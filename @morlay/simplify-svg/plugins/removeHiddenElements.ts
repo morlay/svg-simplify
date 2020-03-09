@@ -1,4 +1,4 @@
-import * as _ from "lodash";
+import { isEmpty } from "lodash";
 
 import { IPlugin } from "../utils";
 
@@ -14,12 +14,12 @@ const isHidden = ($elem: Cheerio): boolean =>
   ($elem.is("rect") && isEmptyChildren($elem) && ($elem.attr("width") === "0" || $elem.attr("height") === "0")) ||
   ($elem.is("pattern") && ($elem.attr("width") === "0" || $elem.attr("height") === "0")) ||
   ($elem.is("image") && ($elem.attr("width") === "0" || $elem.attr("height") === "0")) ||
-  ($elem.is("path") && (_.isEmpty($elem.attr("d")) || !regValidPath.test($elem.attr("d")))) ||
-  ($elem.is("polyline") && _.isEmpty($elem.attr("points"))) ||
-  ($elem.is("polygon") && _.isEmpty($elem.attr("points")));
+  ($elem.is("path") && (isEmpty($elem.attr("d")) || !regValidPath.test($elem.attr("d")!))) ||
+  ($elem.is("polyline") && isEmpty($elem.attr("points"))) ||
+  ($elem.is("polygon") && isEmpty($elem.attr("points")));
 
 export const removeHiddenElements: IPlugin = ($): void => {
   $("*")
-    .filter((idx, element) => isHidden($(element)))
+    .filter((_, element) => isHidden($(element)))
     .remove();
 };

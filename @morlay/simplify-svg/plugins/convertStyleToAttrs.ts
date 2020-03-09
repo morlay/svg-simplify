@@ -1,5 +1,4 @@
-import * as _ from "lodash";
-
+import { assign, filter, get, isEmpty, mapValues, omit, pick, reduce, startsWith, values } from "lodash";
 import { Declaration, parse, Rule } from "postcss";
 
 import { attrsGroups } from "../collections";
@@ -9,8 +8,8 @@ import { IPlugin } from "../utils";
 const stylingProps = attrsGroups.presentation;
 
 const pickDeclToStyleObject = (nodes: Declaration[]) => {
-  const rules = _.filter(nodes, (node: Declaration) => node.type === "decl");
-  return _.reduce(
+  const rules = filter(nodes, (node: Declaration) => node.type === "decl");
+  return reduce(
     rules,
     (result, node) => ({
       ...result,
@@ -21,26 +20,26 @@ const pickDeclToStyleObject = (nodes: Declaration[]) => {
 };
 
 const appendStyleProps = (elm: CheerioElement, styles: any) => {
-  const styleAttrs = _.pick(styles, stylingProps);
-  const otherStyles = _.omit(styles, stylingProps);
+  const styleAttrs = pick(styles, stylingProps);
+  const otherStyles = omit(styles, stylingProps);
 
-  _.assign(elm, {
+  assign(elm, {
     attribs: {
-      ..._.omit(elm.attribs, "style"),
+      ...omit(elm.attribs, "style"),
       ...styleAttrs,
     },
   });
 
-  if (!_.isEmpty(otherStyles)) {
-    _.assign(elm.attribs, {
-      style: _.values(_.mapValues(otherStyles, (value: string, key: string) => `${key}: ${value}`)).join(";"),
+  if (!isEmpty(otherStyles)) {
+    assign(elm.attribs, {
+      style: values(mapValues(otherStyles, (value: string, key: string) => `${key}: ${value}`)).join(";"),
     });
   }
 };
 
 export const convertStyleToAttrs: IPlugin = ($): void => {
   $("style")
-    .each((index, element) => {
+    .each((_, element) => {
       const styleString = $(element).contents();
       const root = parse(styleString);
 
@@ -50,16 +49,16 @@ export const convertStyleToAttrs: IPlugin = ($): void => {
         const styles = pickDeclToStyleObject(node.nodes as Declaration[]);
 
         $(node.selector)
-          .each((idx, elem) => {
+          .each((_, elem) => {
             appendStyleProps(elem, styles);
           })
-          .removeAttr(_.startsWith(node.selector, ".") ? "class" : "");
+          .removeAttr(startsWith(node.selector, ".") ? "class" : "");
       });
     })
     .remove();
 
-  $("[style]").each((idx, elem) => {
-    const root = parse(_.get(elem.attribs, "style"));
+  $("[style]").each((_, elem) => {
+    const root = parse(get(elem.attribs, "style"));
     const styles = pickDeclToStyleObject(root.nodes as Declaration[]);
 
     appendStyleProps(elem, styles);

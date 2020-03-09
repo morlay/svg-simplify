@@ -1,14 +1,14 @@
-import * as _ from "lodash";
+import { forEach } from "lodash";
 
 import { IPlugin } from "../utils";
 
 const descriptiveElements = ["title", "desc", "metadata"];
 
 export const removeMetas: IPlugin = ($): void => {
-  _.forEach(descriptiveElements, (tag) => {
+  forEach(descriptiveElements, (tag) => {
     const $elm = $(tag);
 
-    $elm.each((index, element) => {
+    $elm.each((_, element) => {
       const $element = $(element);
       $element.remove();
     });

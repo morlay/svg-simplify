@@ -1,13 +1,13 @@
-import * as _ from "lodash";
-
-import { IPlugin } from "../utils";
+import { forEach, includes } from "lodash";
 
 import { referencesProps } from "../collections";
+
+import { IPlugin } from "../utils";
 
 const regReferencesUrl = /\burl\(("|')?#(.+?)\1\)/;
 
 export const removeDefs: IPlugin = ($): void => {
-  $("use").each((idx, element) => {
+  $("use").each((_, element) => {
     const $elm = $(element);
     const $def = $($elm.attr("xlink:href"))
       .eq(0)
@@ -18,10 +18,10 @@ export const removeDefs: IPlugin = ($): void => {
 
   const referencesIDs: string[] = [];
 
-  _.forEach(referencesProps, (referenceProp) => {
-    $(`[${referenceProp}]`).each((index, element) => {
-      const attrValue = $(element).attr(referenceProp);
-      const match = attrValue.match(regReferencesUrl);
+  forEach(referencesProps, (referenceProp) => {
+    $(`[${referenceProp}]`).each((_, element) => {
+      const attrValue = $(element).attr(referenceProp)!;
+      const match = regReferencesUrl.exec(attrValue);
 
       if (match) {
         const key = match[2];
@@ -31,10 +31,10 @@ export const removeDefs: IPlugin = ($): void => {
   });
 
   $("[id]")
-    .filter((index, element) => !_.includes(referencesIDs, $(element).attr("id")))
+    .filter((_, element) => !includes(referencesIDs, $(element).attr("id")))
     .remove();
 
   $("defs")
-    .filter((index, element) => $(element).children().length === 0)
+    .filter((_, element) => $(element).children().length === 0)
     .remove();
 };

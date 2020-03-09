@@ -1,18 +1,22 @@
+import SVGPath from "svgpath";
 import { IPlugin } from "../utils";
-
-import * as SVGPath from "svgpath";
 
 export const removeTransform: IPlugin = ($): void => {
   const $elms = $("[transform]");
 
   if ($elms.length > 0) {
     const $element = $elms.first();
-    const transformString = $element.attr("transform");
+    const transformString = $element.attr("transform")!;
     const $paths = $element.find("path");
 
-    $paths.each((idx, pathElement) => {
+    $paths.each((_, pathElement) => {
       const $path = $(pathElement);
       const pathString = $path.attr("d");
+
+      if (!pathString) {
+        return;
+      }
+
       const svgPath = new SVGPath(pathString);
 
       const newPathString = svgPath

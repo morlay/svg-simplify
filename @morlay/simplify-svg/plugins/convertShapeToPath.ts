@@ -1,7 +1,6 @@
-import * as _ from "lodash";
-
 import { toPath } from "svg-points";
 import { IPlugin } from "../utils";
+import { mapValues, keys, forEach, get, omit } from "lodash";
 
 const shapes = {
   circle: {
@@ -38,30 +37,30 @@ const shapes = {
 };
 
 const pickAttrs = (attrs: any, defaults: any): any =>
-  _.mapValues(defaults, (value: string, key: string) =>
+  mapValues(defaults, (value: string, key: string) =>
     key === "points" ? attrs[key] : parseFloat(attrs[key]) || value,
   );
 
 export const convertShapeToPath: IPlugin = ($): void => {
-  const shapeTags = _.keys(shapes);
+  const shapeTags = keys(shapes);
 
-  _.forEach(shapeTags, (tag) => {
+  forEach(shapeTags, (tag) => {
     const $elm = $(tag);
-    const shapeDefaults = _.get(shapes, tag);
-    const shapeAttrs = _.keys(shapeDefaults);
+    const shapeDefaults = get(shapes, tag);
+    const shapeAttrs = keys(shapeDefaults);
 
-    $elm.each((index, element) => {
+    $elm.each((_, element) => {
       const $element = $(element);
       const attrs = $element.attr();
 
       const pathString = toPath({
         type: tag,
         ...pickAttrs(attrs, shapeDefaults),
-      } as any);
+      });
 
       const $path = $("<path />");
 
-      _.forEach(_.omit(attrs, shapeAttrs), (value: string, attr: string) => {
+      forEach(omit(attrs, shapeAttrs), (value: string, attr: string) => {
         $path.attr(attr, value);
       });
 

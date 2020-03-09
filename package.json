@@ -1,46 +1,14 @@
 {
   "name": "simplify-svg",
-  "version": "3.2.4",
-  "scripts": {
-    "fmt": "prettier --write packages/**/src/**/**.{ts,json}",
-    "test": "jest",
-    "build": "tsc",
-    "prepare": "npm test && npm run build"
-  },
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib",
-    "src"
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "@morlay/*"
   ],
-  "license": "WTFPL",
-  "dependencies": {
-    "@types/cheerio": "0.22.x",
-    "@types/lodash": "4.14.x",
-    "cheerio": "1.0.0-rc.3",
-    "lodash": "4.17.x",
-    "node-murmurhash": "2.1.x",
-    "postcss": "7.0.x",
-    "svg-points": "6.0.x",
-    "svgpath": "2.2.x"
-  },
-  "devDependencies": {
-    "@types/fs-extra": "8.0.x",
-    "@types/glob": "7.1.x",
-    "@types/jest": "24.0.x",
-    "@types/node": "12.0.x",
-    "fs-extra": "8.1.x",
-    "glob": "7.1.x",
-    "jest": "24.8.x",
-    "prettier": "1.18.x",
-    "ts-jest": "24.0.x",
-    "ts-node": "8.3.x",
-    "typescript": "3.5.x"
-  },
   "jest": {
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "transform": {
-      ".+\\.tsx?$": "ts-jest"
+      "^.+\\.[t|j]sx?$": "babel-jest"
     },
     "moduleFileExtensions": [
       "tsx",
@@ -53,5 +21,53 @@
       "<rootDir>"
     ],
     "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
+  },
+  "scripts": {
+    "ncu": "lerna exec -- ncu -u",
+    "clean": "rm -rf @querycap*/*/node_modules",
+    "fmt": "prettier --write @querycap*/{,**/}{,**/}*.{ts,tsx,json,md}",
+    "test": "jest --coverage",
+    "build": "lerna exec monobundle",
+    "prepare": "yarn test && yarn build"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "@querycap-dev/babel-preset": "*",
+    "@querycap-dev/eslint-config": "*",
+    "@querycap-dev/monobundle": "*",
+    "@babel/runtime": "7.8.7",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@types/jest": "25.1.x",
+    "@types/lodash": "4.14.x",
+    "@types/node": "13.9.x",
+    "babel-jest": "25.1.x",
+    "eslint": "6.8.x",
+    "husky": "4.2.3",
+    "jest": "25.1.0",
+    "lerna": "3.20.2",
+    "lint-staged": "10.0.8",
+    "lodash": "4.17.15",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "typescript": "3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "yarn",
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --quiet"
+    ]
   }
 }

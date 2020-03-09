@@ -1,0 +1,26 @@
+{
+  "name": "@morlay/simplify-svg",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/cheerio": "0.22.x",
+    "@types/lodash": "4.14.x",
+    "cheerio": "1.0.0-rc.3",
+    "lodash": "4.17.x",
+    "node-murmurhash": "2.1.x",
+    "postcss": "7.0.x",
+    "svg-points": "6.0.x",
+    "svgpath": "2.2.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@babel/runtime-corejs3": "*"
+  },
+  "files": [
+    "dist/"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js"
+}
