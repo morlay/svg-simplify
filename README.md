@@ -2,13 +2,12 @@
 
 Simplify SVG which is exported by Sketch/Illustrator etc.
 
-[![NPM](https://img.shields.io/npm/v/simplify-svg.svg)](https://npmjs.org/package/simplify-svg)
+[![NPM](https://img.shields.io/npm/v/@morlay/simplify-svg.svg)](https://npmjs.org/package/@morlay/simplify-svg)
 [![Build Status](https://img.shields.io/travis/morlay/simplify-svg.svg)](https://travis-ci.org/morlay/simplify-svg)
-[![Dependencies](https://img.shields.io/david/morlay/simplify-svg.svg)](https://david-dm.org/morlay/simplify-svg)
 
 ### Usage
 
-#### Use `simplify-svg`
+#### Use `@morlay/simplify-svg`
 
 ```ts
 simplifySvg(svgString: string, plugins?: IPluginConfig[]): string
