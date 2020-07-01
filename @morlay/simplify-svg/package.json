@@ -9,7 +9,7 @@
     "node-murmurhash": "2.1.x",
     "postcss": "7.0.x",
     "svg-points": "6.0.x",
-    "svgpath": "2.2.x"
+    "svgpath": "2.3.x"
   },
   "publishConfig": {
     "access": "public"
