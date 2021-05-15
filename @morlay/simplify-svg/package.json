@@ -7,7 +7,7 @@
     "cheerio": "1.0.0-rc.3",
     "lodash": "4.17.x",
     "node-murmurhash": "2.1.x",
-    "postcss": "7.0.x",
+    "postcss": "8.2.x",
     "svg-points": "6.0.x",
     "svgpath": "2.2.x"
   },
